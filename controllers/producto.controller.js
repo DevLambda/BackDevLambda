@@ -23,14 +23,14 @@ function registrarProducto(req, res){
     console.log(req.body);
  
     //Primero buscamos el producto en la abse de datos
-    Producto.findOne({codigo: req.body.codigo}, (err, productoEnBaseDeDatos)=>{ 
+    Producto.findOne({idProducto: req.body.idProducto}, (err, productoEnBaseDeDatos)=>{ 
         if(!productoEnBaseDeDatos){
             //Si no se encuentra el producto, se guarda
             let productoTemp = {
-                codigo : req.body.codigo,
-                nombre: req.body.nombre,
-                precio: req.body.precio,
-                disponible: req.body.disponible
+                idProducto : req.body.idProducto,
+                descripcion: req.body.descripcion,
+                valor: req.body.valor,
+                estado: req.body.estado
             }
        
             let productoARegistrar = new Producto(productoTemp);
@@ -52,7 +52,7 @@ function registrarProducto(req, res){
         }else{
             //Si se encuenra el producto sacamos un error
             res.status(400).send({
-                message: `El producto con codigo ${req.body.codigo} ya se encuentra registrado`
+                message: `El producto con codigo ${req.body.idProducto} ya se encuentra registrado`
             })
         }
     });
@@ -60,18 +60,18 @@ function registrarProducto(req, res){
 }
 
 function modificarProducto(req, res){
-    console.log('POST /api/producto');
+    console.log('PATCH /api/producto');
     console.log(req.body);
  
     //Primero buscamos el producto en la abse de datos
-    Producto.findOne({codigo: req.body.codigo}, (err, productoEnBaseDeDatos)=>{ 
+    Producto.findOne({idProducto: req.body.idProducto}, (err, productoEnBaseDeDatos)=>{ 
         if(!productoEnBaseDeDatos){
             //Se modifica el producto, se guarda
             let productoTemp1 = {
-                //codigo : req.body.codigo,
-                nombre: req.body.nombre,
-                precio: req.body.precio,
-                disponible: req.body.disponible
+                idProducto : req.body.idProducto,
+                descripcion: req.body.descripcion,
+                valor: req.body.valor,
+                estado: req.body.estado
             }
        
             let productoAModificar = new Producto(productoTemp1);

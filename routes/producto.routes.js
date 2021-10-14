@@ -6,7 +6,7 @@ const ProductoCtrl = require('../controllers/producto.controller');
  
 api.get('/producto', ProductoCtrl.getProductos);
 api.post('/producto', ProductoCtrl.registrarProducto);
-api.put('/producto', ProductoCtrl.modificarProducto);
+api.patch('/producto', ProductoCtrl.modificarProducto);
 module.exports = api;
 
 

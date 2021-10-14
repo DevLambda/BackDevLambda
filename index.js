@@ -1,3 +1,4 @@
+//conectar a base de datos
 'use strict'
 const mongoose = require('mongoose');
  
